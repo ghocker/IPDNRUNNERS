@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="images/logo.png" />
+    <title>IPDNRUNNERS OFFICIAL</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="main-header" style="padding: 0px; margin-bottom: 0px">
+      <img src="images/logo.png" alt="IPDN Runners Logo" style="height: 100px; /* LOGO DIPERBESAR LAGI */ filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5))" />
+      <div>
+        <h1 style="color: #ffff; font-family: 'Anton', sans-serif; font-size: 30px; margin-bottom: 0px">IPDN RUNNERS</h1>
+        <p style="color: #ffff; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600">Performance Jersey for Runners</p>
+      </div>
+    </header>
+
+    <div class="promo-banner">🎉 GRATIS ONGKIR MIN. PEMBELIAN 5 PCS 🎉</div>
+
+    <section class="catalog">
+      <h2>KATALOG PRODUK</h2>
+      <div class="grid" id="produkList">
+        <!-- PRODUK MUNCUL DARI JS -->
+      </div>
+    </section>
+
+    <section class="order">
+      <h2>DATA PEMESAN</h2>
+
+      <input id="nama" placeholder="Nama Lengkap" />
+      <input id="wa" placeholder="Nomor WhatsApp" />
+     <label>Alamat Lengkap</label>
+<textarea id="alamat" placeholder="Nama Jalan / Perumahan / No Rumah" required></textarea>
+
+<label>Detail Wilayah</label>
+<input type="text" id="kecamatan" placeholder="Kecamatan" required>
+<input type="text" id="kelurahan" placeholder="Kelurahan" required>
+
+<div style="display:flex; gap:10px;">
+  <input type="text" id="rtrw" placeholder="RT/RW" required>
+  <input type="text" id="kodepos" placeholder="Kode Pos" required>
+</div>
+
+      <select id="wilayah">
+        <option value="Jawa">Dalam Pulau Jawa</option>
+        <option value="Luar">Luar Pulau Jawa</option>
+      </select>
+
+      <h3>Keranjang</h3>
+      <div id="cart"></div>
+
+      <button class="checkout" onclick="checkout()">Checkout via WhatsApp</button>
+    </section>
+    <a href="https://wa.me/6288707515651?text=Halo%20Admin%20IPDNRunners,%20saya%20ingin%20bertanya" class="wa-float" target="_blank" title="Tanya Admin"> 💬 </a>
+
+    <!-- JS WAJIB DI BAWAH -->
+    <script src="script.js"></script>
+  </body>
+</html>

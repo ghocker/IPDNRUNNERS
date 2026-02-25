@@ -1,0 +1,219 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f4f4f4;
+  color: #111;
+}
+
+/* HEADER */
+.brand-text h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: 42px;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.brand-text p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 28px 36px;
+  background: linear-gradient(135deg, #b00000 0%, #8a0000 40%, #0a0a0a 100%);
+  border-bottom: 4px solid #ff1f1f;
+}
+
+/* LOGO */
+.main-header img {
+  height: 105px; /* LOGO DIPERBESAR LAGI */
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+}
+
+/* BRAND NAME */
+.brand-text h1 {
+  margin: 0;
+  font-family: 'Anton', sans-serif;
+  font-size: 42px; /* LEBIH BOLD */
+  letter-spacing: 3px;
+  color: #ffffff;
+  line-height: 1.05;
+}
+
+/* TAGLINE */
+.brand-text p {
+  margin-top: 2px; /* JARAK DIPERKETAT */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  color: #f0f0f0;
+}
+
+/* SECTION */
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-body strong {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.card select,
+.card input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.card button {
+  width: 100%;
+  padding: 10px;
+  background: #b80000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ORDER */
+.order input,
+.order textarea,
+.order select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#cart p {
+  background: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+.checkout {
+  background: black;
+  color: white;
+  border: none;
+  padding: 14px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.wa-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: white;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  transition: transform 0.2s;
+}
+
+.wa-float:hover {
+  transform: scale(1.1);
+}
+.promo-banner {
+  background: linear-gradient(90deg, #b00000, #302b2b);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 28px 36px;
+  background: linear-gradient(135deg, #b00000 0%, #8a0000 40%, #0a0a0a 100%);
+  border-bottom: 4px solid #fff7f7;
+}
+
+.main-header img {
+  height: 92px;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+}
+
+.brand-text h1 {
+  margin: 0;
+  font-family: 'Anton', sans-serif;
+  font-size: 42px;
+  letter-spacing: 3px;
+  color: #ffffff !important;
+  line-height: 1.05;
+}
+
+.brand-text p {
+  margin-top: 2px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  color: #f0f0f0 !important;
+}
+.checkout-form label {
+  font-weight: 600;
+  margin: 10px 0 4px;
+  display: block;
+}
