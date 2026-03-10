@@ -32,24 +32,68 @@
     <section class="order">
       <h2>DATA PEMESAN</h2>
 
-      <input id="nama" placeholder="Nama Lengkap" />
-      <input id="wa" placeholder="Nomor WhatsApp" />
-     <label>Alamat Lengkap</label>
-<textarea id="alamat" placeholder="Nama Jalan / Perumahan / No Rumah" required></textarea>
+      <input id="nama" placeholder="Nama Lengkap" required />
+      <input id="wa" placeholder="Nomor WhatsApp" required />
+      <label>Provinsi *</label>
+      <select id="provinsi" required>
+        <option value="">-- Pilih Provinsi --</option>
 
-<label>Detail Wilayah</label>
-<input type="text" id="kecamatan" placeholder="Kecamatan" required>
-<input type="text" id="kelurahan" placeholder="Kelurahan" required>
+        <option value="Jawa Barat">Jawa Barat</option>
+        <option value="Jawa Tengah">Jawa Tengah</option>
+        <option value="Jawa Timur">Jawa Timur</option>
+        <option value="DKI Jakarta">DKI Jakarta</option>
+        <option value="Banten">Banten</option>
+        <option value="DI Yogyakarta">DI Yogyakarta</option>
 
-<div style="display:flex; gap:10px;">
-  <input type="text" id="rtrw" placeholder="RT/RW" required>
-  <input type="text" id="kodepos" placeholder="Kode Pos" required>
-</div>
+        <option value="Aceh">Aceh</option>
+        <option value="Sumatera Utara">Sumatera Utara</option>
+        <option value="Sumatera Barat">Sumatera Barat</option>
+        <option value="Riau">Riau</option>
+        <option value="Jambi">Jambi</option>
+        <option value="Sumatera Selatan">Sumatera Selatan</option>
+        <option value="Bengkulu">Bengkulu</option>
+        <option value="Lampung">Lampung</option>
+        <option value="Kepulauan Riau">Kepulauan Riau</option>
+        <option value="Bangka Belitung">Bangka Belitung</option>
 
-      <select id="wilayah">
-        <option value="Jawa">Dalam Pulau Jawa</option>
-        <option value="Luar">Luar Pulau Jawa</option>
+        <option value="Kalimantan Barat">Kalimantan Barat</option>
+        <option value="Kalimantan Tengah">Kalimantan Tengah</option>
+        <option value="Kalimantan Selatan">Kalimantan Selatan</option>
+        <option value="Kalimantan Timur">Kalimantan Timur</option>
+        <option value="Kalimantan Utara">Kalimantan Utara</option>
+
+        <option value="Bali">Bali</option>
+
+        <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+        <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+        <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+        <option value="Sulawesi Barat">Sulawesi Barat</option>
+        <option value="Sulawesi Utara">Sulawesi Utara</option>
+        <option value="Gorontalo">Gorontalo</option>
+
+        <option value="Maluku">Maluku</option>
+        <option value="Maluku Utara">Maluku Utara</option>
+        <option value="Papua">Papua</option>
+        <option value="Papua Barat">Papua Barat</option>
+        <option value="Papua Selatan">Papua Selatan</option>
+        <option value="Papua Tengah">Papua Tengah</option>
+        <option value="Papua Pegunungan">Papua Pegunungan</option>
+        <option value="Papua Barat Daya">Papua Barat Daya</option>
+
+        <option value="NTB">Nusa Tenggara Barat</option>
+        <option value="NTT">Nusa Tenggara Timur</option>
       </select>
+      <label>Alamat Lengkap</label>
+      <textarea id="alamat" placeholder="Nama Jalan / Perumahan / No Rumah" required></textarea>
+
+      <label>Detail Wilayah</label>
+      <input type="text" id="kecamatan" placeholder="Kecamatan" required />
+      <input type="text" id="kelurahan" placeholder="Kelurahan" required />
+
+      <div style="display: flex; gap: 10px">
+        <input type="text" id="rtrw" placeholder="RT/RW" required />
+        <input type="text" id="kodepos" placeholder="Kode Pos" required />
+      </div>
 
       <h3>Keranjang</h3>
       <div id="cart"></div>

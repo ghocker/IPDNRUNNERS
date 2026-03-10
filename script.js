@@ -17,12 +17,12 @@ document.addEventListener('DOMContentLoaded', function () {
     '5XL': 25000,
   };
 
-  const ONGKIR_NORMAL = {
-    Jawa: 15000,
-    Luar: 25000,
+  const ongkirWilayah = {
+    jawa: 15000,
+    sumateraKalimantan: 25000,
+    sulawesiBali: 30000,
+    timur: 35000,
   };
-
-  const GRATIS_ONGKIR_QTY = 5;
 
   // ===============================
   // DATA PRODUK
@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
     { nama: 'Aqua Biru', img: 'images/biru.jpg' },
     { nama: 'Aqua Merah Muda', img: 'images/pink.jpg' },
   ];
-   
 
   let cart = [];
   const produkList = document.getElementById('produkList');
@@ -99,6 +98,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     cart.push({ produk, gender, lengan, size, qty, harga });
     renderCart();
+    document.getElementById('cart').scrollIntoView({
+      behavior: 'smooth',
+    });
   };
 
   // ===============================
@@ -108,13 +110,49 @@ document.addEventListener('DOMContentLoaded', function () {
     cart.splice(index, 1);
     renderCart();
   };
+  // ===============================
+  // MAPPING PROVINSI
+  // ===============================
+  function hitungOngkirProvinsi(provinsi) {
+    const jawa = ['Jawa Barat', 'Jawa Tengah', 'Jawa Timur', 'DKI Jakarta', 'Banten', 'DI Yogyakarta'];
 
+    const sumateraKalimantan = [
+      'Aceh',
+      'Sumatera Utara',
+      'Sumatera Barat',
+      'Riau',
+      'Jambi',
+      'Sumatera Selatan',
+      'Bengkulu',
+      'Lampung',
+      'Kepulauan Riau',
+      'Bangka Belitung',
+      'Kalimantan Barat',
+      'Kalimantan Tengah',
+      'Kalimantan Selatan',
+      'Kalimantan Timur',
+      'Kalimantan Utara',
+    ];
+
+    const sulawesiBali = ['Bali', 'Sulawesi Selatan', 'Sulawesi Tengah', 'Sulawesi Tenggara', 'Sulawesi Barat', 'Sulawesi Utara', 'Gorontalo'];
+
+    if (jawa.includes(provinsi)) return ongkirWilayah.jawa;
+
+    if (sumateraKalimantan.includes(provinsi)) return ongkirWilayah.sumateraKalimantan;
+
+    if (sulawesiBali.includes(provinsi)) return ongkirWilayah.sulawesiBali;
+
+    return ongkirWilayah.timur;
+  }
   // ===============================
   // HITUNG ONGKIR DINAMIS
   // ===============================
-  function hitungOngkir(totalQty, wilayah) {
-    if (totalQty >= GRATIS_ONGKIR_QTY) return 0;
-    return ONGKIR_NORMAL[wilayah];
+  function hitungOngkir(totalQty) {
+    const provinsi = document.getElementById('provinsi').value;
+
+    if (totalQty >= 5) return 0;
+
+    return hitungOngkirProvinsi(provinsi);
   }
 
   // ===============================
@@ -143,9 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </p>
       `;
     });
-
-    const wilayah = wilayahSelect.value;
-    const ongkir = hitungOngkir(totalQty, wilayah);
+    const ongkir = hitungOngkir(totalQty);
     const total = subtotal + ongkir;
 
     html += `
@@ -153,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <p><strong>Jumlah Item :</strong> ${totalQty} pcs</p>
       <p><strong>Subtotal :</strong> Rp${subtotal.toLocaleString('id-ID')}</p>
       <p><strong>Ongkir :</strong> Rp${ongkir.toLocaleString('id-ID')}
-        ${ongkir === 0 ? '(Gratis Ongkir 🎉)' : `(${wilayah})`}
+        ${ongkir === 0 ? '<p style="color:green">(Gratis Ongkir 🎉)</p>' : ``}
       </p>
       <p><strong>Total :</strong> Rp${total.toLocaleString('id-ID')}</p>
     `;
@@ -164,8 +200,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // ===============================
   // AUTO UPDATE SAAT GANTI WILAYAH
   // ===============================
-  wilayahSelect.addEventListener('change', renderCart);
-
+  document.getElementById('provinsi').addEventListener('change', function () {
+    renderCart();
+  });
   // ===============================
   // CHECKOUT → WHATSAPP
   // ===============================
@@ -174,21 +211,24 @@ document.addEventListener('DOMContentLoaded', function () {
       alert('Keranjang masih kosong');
       return;
     }
-
     const nama = document.getElementById('nama').value;
     const wa = document.getElementById('wa').value;
     const alamat = document.getElementById('alamat').value;
-    const kecamatan = document.getElementById("kecamatan").value;
-    const kelurahan = document.getElementById("kelurahan").value;
-    const rtrw = document.getElementById("rtrw").value;
-    const kodepos = document.getElementById("kodepos").value;
-    const wilayah = wilayahSelect.value;
+    const kecamatan = document.getElementById('kecamatan').value;
+    const kelurahan = document.getElementById('kelurahan').value;
+    const rtrw = document.getElementById('rtrw').value;
+    const kodepos = document.getElementById('kodepos').value;
 
     const subtotal = cart.reduce((s, i) => s + i.harga * i.qty, 0);
     const totalQty = cart.reduce((s, i) => s + i.qty, 0);
-    const ongkir = hitungOngkir(totalQty, wilayah);
+    const ongkir = hitungOngkir(totalQty);
     const total = subtotal + ongkir;
+    const provinsi = document.getElementById('provinsi').value;
 
+    if (provinsi === '' || alamat === '' || nama === '' || wa === '' || kecamatan === '' || kelurahan === '' || rtrw === '' || kodepos === '') {
+      alert('Mohon isi Identitas dan Alamat Lengkap terlebih dahulu');
+      return;
+    }
     const detail = cart
       .map(
         (i) =>
